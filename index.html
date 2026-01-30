@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D-XPLOIT | TikTok Downloader Premium</title>
+    <title>D-XPLOIT | TikTok Video Downloader</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root { --neon: #00f2ff; --bg: #030712; --glass: rgba(255, 255, 255, 0.03); --border: rgba(255, 255, 255, 0.1); }
@@ -11,99 +11,110 @@
         
         body { 
             background: var(--bg); 
-            background-image: radial-gradient(circle at 0% 0%, rgba(0, 242, 255, 0.15) 0%, transparent 40%),
-                              radial-gradient(circle at 100% 100%, rgba(255, 0, 128, 0.1) 0%, transparent 40%);
+            background-image: radial-gradient(circle at 0% 0%, rgba(0, 242, 255, 0.12) 0%, transparent 40%),
+                              radial-gradient(circle at 100% 100%, rgba(255, 0, 128, 0.08) 0%, transparent 40%);
             color: #fff; min-height: 100vh; display: flex; flex-direction: column; align-items: center;
         }
 
-        header { padding: 50px 20px; text-align: center; }
+        header { padding: 60px 20px 40px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 15px; }
+        
+        /* LOGO TIKTOK GLOWING */
+        .tt-logo {
+            width: 70px; height: 70px; background: #000; border-radius: 18px;
+            display: flex; align-items: center; justify-content: center;
+            border: 2px solid var(--neon); box-shadow: 0 0 25px rgba(0, 242, 255, 0.5);
+            margin-bottom: 10px;
+        }
+
         header h1 { 
-            font-size: 2.2rem; font-weight: 800; letter-spacing: -2px;
+            font-size: 1.8rem; font-weight: 800; letter-spacing: -1px;
             background: linear-gradient(to right, #00f2ff, #0062ff);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.3));
         }
-        header p { font-size: 0.75rem; color: #94a3b8; margin-top: 10px; font-weight: 600; letter-spacing: 1px; }
+        header p { font-size: 0.8rem; color: #94a3b8; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
 
         .container { width: 100%; max-width: 480px; padding: 0 20px; }
 
-        /* GLASS CARD */
         .glass-card { 
             background: var(--glass); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--border); border-radius: 28px; padding: 30px;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
 
-        input { 
-            width: 100%; padding: 20px; border-radius: 18px; border: 1px solid var(--border);
-            background: rgba(0, 0, 0, 0.3); color: #fff; margin-bottom: 20px;
-            outline: none; font-size: 0.95rem; transition: 0.3s;
-        }
-        input:focus { border-color: var(--neon); box-shadow: 0 0 20px rgba(0, 242, 255, 0.2); }
-
-        .btn-grad { 
-            width: 100%; padding: 18px; border-radius: 18px; border: none;
-            background: linear-gradient(135deg, #00f2ff 0%, #0062ff 100%);
-            color: #000; font-weight: 800; font-size: 1rem; cursor: pointer;
-            transition: 0.3s; box-shadow: 0 10px 20px rgba(0, 242, 255, 0.2);
-        }
-        .btn-grad:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(0, 242, 255, 0.4); }
-
-        /* IKLAN GAYA NOTIFIKASI */
-        .ad-notif {
-            background: rgba(0, 242, 255, 0.05); border: 1px solid rgba(0, 242, 255, 0.2);
+        /* IKLAN 1 & 2 (SAMARAN) */
+        .ad-link {
+            background: rgba(0, 242, 255, 0.05); border: 1px solid rgba(0, 242, 255, 0.1);
             padding: 12px; border-radius: 14px; color: var(--neon);
-            font-size: 0.7rem; text-align: center; margin-bottom: 20px; cursor: pointer;
+            font-size: 0.65rem; text-align: center; margin-bottom: 15px; cursor: pointer;
             font-weight: 700; text-transform: uppercase;
         }
 
-        #result-box { display: none; margin-top: 30px; animation: slideUp 0.5s ease; }
-        #preview { width: 100%; border-radius: 20px; border: 1px solid var(--border); margin-bottom: 20px; }
+        input { 
+            width: 100%; padding: 18px; border-radius: 15px; border: 1px solid var(--border);
+            background: rgba(0, 0, 0, 0.4); color: #fff; margin-bottom: 15px;
+            outline: none; font-size: 0.9rem;
+        }
+        input:focus { border-color: var(--neon); }
 
-        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .btn-main { 
+            width: 100%; padding: 18px; border-radius: 15px; border: none;
+            background: linear-gradient(135deg, #00f2ff 0%, #0062ff 100%);
+            color: #000; font-weight: 800; cursor: pointer; transition: 0.3s;
+        }
+        .btn-main:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0, 242, 255, 0.3); }
+
+        #result-box { display: none; margin-top: 30px; text-align: center; animation: slideIn 0.5s ease; }
+        #thumb { width: 100%; border-radius: 20px; border: 1px solid var(--border); margin-bottom: 20px; }
+
+        @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         
-        .footer { margin-top: auto; padding: 40px; font-size: 0.65rem; color: #475569; text-align: center; }
+        .footer { margin-top: auto; padding: 40px; font-size: 0.6rem; color: #475569; text-align: center; line-height: 1.5; }
     </style>
 </head>
 <body>
 
 <header>
+    <div class="tt-logo">
+        <svg viewBox="0 0 448 512" width="35" fill="#fff"><path d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25V349.38A162.55 162.55 0 1 1 185 188.31V278.2a74.62 74.62 0 1 0 52.23 71.18V0l88 0a121.18 121.18 0 0 0 1.86 22.17h0A122.18 122.18 0 0 0 381 102.39a121.43 121.43 0 0 0 67 20.14Z"/></svg>
+    </div>
     <h1>D-XPLOIT</h1>
-    <p>TIKTOK_BYPASS_NODE_v3.0</p>
+    <p>TikTok Video Downloader</p>
 </header>
 
 <div class="container">
-    <div onclick="ads()" class="ad-notif">⚡ STATUS: HIGH-SPEED SERVER CONNECTED</div>
+    <div onclick="ads()" class="ad-link">⚡ STATUS: HIGH-SPEED SERVER CONNECTED</div>
 
     <div class="glass-card">
         <input type="text" id="url" placeholder="Paste link video TikTok...">
-        <button class="btn-grad" id="btn" onclick="start()">DOWNLOAD NOW</button>
+        <button class="btn-main" id="dl-btn" onclick="process()">DOWNLOAD NOW</button>
     </div>
 
     <div id="result-box">
-        <img id="thumb" src="" alt="Preview" style="width: 100%; border-radius: 20px; margin-bottom: 20px;">
-        <button class="btn-grad" style="background: #fff; color: #000;" onclick="finish()">SAVE TO GALLERY (HD)</button>
-        <div onclick="ads()" style="text-align: center; margin-top: 15px; font-size: 0.6rem; color: #64748b; cursor: pointer;">
+        <img id="thumb" src="" alt="Video Preview">
+        <button class="btn-main" style="background: #fff; color: #000;" onclick="finish()">SAVE TO GALLERY (HD)</button>
+        <div onclick="ads()" style="margin-top: 15px; font-size: 0.6rem; color: #64748b; cursor: pointer;">
             Failed? Try <u>Alternative Mirror Server</u>
         </div>
     </div>
 </div>
 
 <div class="footer">
-    &copy; 2026 D-XPLOIT DOWNLOADER <br>
-    ULTRA FAST • NO WATERMARK • SECURE
+    &copy; 2026 D-XPLOIT BY SULTAN_DEV <br>
+    ULTRA FAST • NO WATERMARK • SSL ENCRYPTED
 </div>
 
 <script>
-    const link = "https://www.effectivegatecpm.com/pv9aryyj2?key=a584e9d8bb24603a4c8dbd356198191c";
-    function ads() { window.open(link, '_blank', 'noopener,noreferrer'); }
+    // MASUKIN LINK ADSTERRA LO DISINI, SAT!
+    const linkIklan = "https://www.effectivegatecpm.com/pv9aryyj2?key=a584e9d8bb24603a4c8dbd356198191c";
 
-    async function start() {
+    function ads() { window.open(linkIklan, '_blank', 'noopener,noreferrer'); }
+
+    async function process() {
         const u = document.getElementById('url').value;
-        if(!u.includes("tiktok.com")) return alert("LINK TIKTOK MANA, SAT?!");
+        if(!u.includes("tiktok.com")) return alert("HANYA BISA TIKTOK, KONTOL!");
         
-        const b = document.getElementById('btn');
-        b.innerHTML = "FETCHING..."; b.disabled = true;
+        const b = document.getElementById('dl-btn');
+        b.innerHTML = "EXPLOITING..."; b.disabled = true;
         ads(); // Iklan 1
 
         try {
@@ -113,10 +124,10 @@
                 document.getElementById('result-box').style.display = 'block';
                 document.getElementById('thumb').src = data.result.video.cover;
                 window.videoUrl = data.result.video.noWatermark;
-                b.innerHTML = "SUCCESS!";
+                b.innerHTML = "DONE!";
             } else { throw new Error(); }
         } catch (e) {
-            alert("SERVER BUSY! Klik 'STATUS' di atas.");
+            alert("SERVER BUSY! Klik 'STATUS' di atas untuk verifikasi.");
             b.innerHTML = "DOWNLOAD NOW"; b.disabled = false;
         }
     }
