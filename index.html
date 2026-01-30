@@ -3,123 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D-XPLOIT | Universal Video Downloader</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>D-XPLOIT TIKTOK DOWNLOADER | No Watermark</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
-        :root { --main: #00f2ff; --bg: #020617; --card: #0f172a; --text: #f8fafc; --border: #1e293b; }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        :root { --neon: #00ff88; --bg: #050505; --card: #0a0a0a; --text: #888; --border: #1a1a1a; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'JetBrains Mono', monospace; }
         body { background: var(--bg); color: var(--text); padding-bottom: 50px; }
         
-        header { padding: 40px 20px; text-align: center; background: radial-gradient(circle at top, #1e293b 0%, var(--bg) 100%); }
-        header h1 { font-size: 1.8rem; font-weight: 800; color: var(--main); text-shadow: 0 0 20px rgba(0, 242, 255, 0.4); }
-        header p { font-size: 0.8rem; opacity: 0.6; margin-top: 10px; }
+        header { padding: 40px 20px; text-align: center; border-bottom: 1px solid var(--border); background: linear-gradient(180deg, #0a0a0a 0%, #050505 100%); }
+        header h1 { font-size: 1.6rem; font-weight: 800; color: var(--neon); letter-spacing: -1px; text-shadow: 0 0 15px rgba(0, 255, 136, 0.3); }
+        header p { font-size: 0.6rem; opacity: 0.5; margin-top: 8px; letter-spacing: 2px; }
 
-        .container { max-width: 500px; margin: auto; padding: 20px; margin-top: -30px; }
-
-        /* PLATFORM ICONS */
-        .platform-list { display: flex; justify-content: center; gap: 15px; margin-bottom: 20px; opacity: 0.5; font-size: 0.7rem; font-weight: 800; }
-        .platform-list span { border: 1px solid var(--border); padding: 5px 10px; border-radius: 50px; }
-
-        .dl-card { background: var(--card); padding: 25px; border-radius: 24px; border: 1px solid var(--border); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
-        input { width: 100%; padding: 18px; border-radius: 15px; border: 2px solid var(--border); background: #020617; color: #fff; margin-bottom: 15px; outline: none; font-size: 0.9rem; transition: 0.3s; }
-        input:focus { border-color: var(--main); }
-
-        .btn-main { width: 100%; padding: 18px; background: var(--main); color: #000; border: none; border-radius: 15px; font-weight: 800; cursor: pointer; font-size: 1rem; transition: 0.3s; }
-        .btn-main:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0, 242, 255, 0.3); }
-
-        /* PREVIEW AREA */
-        #preview-area { display: none; margin-top: 25px; text-align: center; animation: fadeIn 0.5s; }
-        #thumb { width: 100%; border-radius: 15px; margin-bottom: 15px; border: 1px solid var(--main); }
+        .container { max-width: 450px; margin: auto; padding: 20px; }
         
-        /* IKLAN DISAMARKAN */
-        .ad-box { width: 100%; padding: 12px; margin: 15px 0; background: rgba(255,255,255,0.03); border: 1px dashed #334155; border-radius: 12px; color: #64748b; font-size: 0.7rem; text-align: center; cursor: pointer; }
-        .ad-box b { color: var(--main); }
+        .system-status { font-size: 0.6rem; background: #000; padding: 12px; border: 1px solid var(--border); border-radius: 4px; margin-bottom: 20px; color: #555; line-height: 1.5; }
+        .system-status b { color: var(--neon); }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .footer { text-align: center; margin-top: 50px; font-size: 0.7rem; opacity: 0.4; }
+        .x-card { background: var(--card); padding: 30px; border-radius: 8px; border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        input { width: 100%; padding: 16px; background: #000; border: 1px solid var(--border); color: var(--neon); margin-bottom: 20px; outline: none; font-size: 0.85rem; border-radius: 4px; }
+        input:focus { border-color: var(--neon); }
+
+        .x-btn { width: 100%; padding: 16px; background: var(--neon); color: #000; border: none; font-weight: 800; cursor: pointer; font-size: 0.9rem; border-radius: 4px; transition: 0.3s; }
+        .x-btn:hover { background: #00cc6e; transform: translateY(-2px); }
+        .x-btn:disabled { background: #111; color: #333; }
+
+        /* IKLAN SAMARAN */
+        .ad-link { display: block; border: 1px solid var(--border); padding: 12px; font-size: 0.65rem; margin: 12px 0; cursor: pointer; text-decoration: none; color: #666; text-align: center; border-radius: 4px; }
+        .ad-link:hover { color: var(--neon); border-color: var(--neon); }
+        .ad-link b { color: var(--neon); }
+
+        #res-area { display: none; margin-top: 30px; border-top: 1px dashed var(--border); padding-top: 25px; text-align: center; animation: fadeIn 0.5s; }
+        #thumb { width: 100%; border-radius: 8px; margin-bottom: 20px; border: 1px solid var(--border); }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .footer { text-align: center; margin-top: 60px; font-size: 0.55rem; color: #222; letter-spacing: 1px; }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>D-XPLOIT CORE</h1>
-    <p>Universal Video Downloader & Converter</p>
+    <h1>D-XPLOIT TIKTOK DOWNLOADER</h1>
+    <p>BYPASS_WATERMARK_CORE_v2.0</p>
 </header>
 
 <div class="container">
-    <div class="platform-list">
-        <span>TIKTOK</span> <span>INSTAGRAM</span> <span>FACEBOOK</span>
+    <div class="system-status">
+        [LOGIN] USER: <b>GUEST_NODE_88</b><br>
+        [SERV] STATUS: <b>ENCRYPTED_AND_ACTIVE</b><br>
+        [LINK] TARGET: <b>TIKTOK_ONLY</b>
     </div>
 
-    <div onclick="ads()" class="ad-box">SERVER_STATUS: <b>FAST_STABLE</b> | CLICK_TO_REFRESH</div>
+    <div onclick="ads()" class="ad-link">VERIFY_ACCESS: <b>CLICK_TO_UNLOCK_HIGH_SPEED</b></div>
 
-    <div class="dl-card">
-        <input type="text" id="targetUrl" placeholder="Tempel link video di sini...">
-        <button class="btn-main" id="runBtn" onclick="runBypass()">DOWNLOAD NOW</button>
+    <div class="x-card">
+        <input type="text" id="targetUrl" placeholder="Tempel link video TikTok...">
+        <button class="x-btn" id="runBtn" onclick="runBypass()">START DOWNLOAD</button>
     </div>
 
-    <div onclick="ads()" class="ad-box">BOOST_DOWNLOAD_SPEED: <b>ENABLED (10Gbps)</b></div>
+    <div onclick="ads()" class="ad-link">CONNECTION: <b>BYPASS_CDN_THROTTLING</b></div>
 
-    <div id="preview-area">
-        <img id="thumb" src="" alt="Thumbnail Preview">
-        <p id="vTitle" style="font-size: 0.8rem; margin-bottom: 15px; font-weight: 600;"></p>
+    <div id="res-area">
+        <img id="thumb" src="" alt="Video Preview">
+        <p id="vTitle" style="font-size: 0.7rem; color: #fff; margin-bottom: 20px; line-height: 1.4;"></p>
         
-        <button class="btn-main" style="background: #fff;" onclick="ads()">GET VIDEO (4K HD)</button>
+        <button class="x-btn" style="background: #fff;" id="finalBtn">SAVE_VIDEO (NO_WM)</button>
         
-        <div onclick="ads()" style="margin-top: 15px; font-size: 0.65rem; color: var(--main); cursor: pointer; text-decoration: underline;">
-            Server Mirror 04 (Gunakan jika link utama gagal)
+        <div onclick="ads()" style="margin-top: 20px; font-size: 0.55rem; color: var(--neon); cursor: pointer; text-decoration: underline;">
+            Server Mirror 02 (Use if download fails)
         </div>
     </div>
 </div>
 
-<div class="footer">D-XPLOIT BY SULTAN_DEV &copy; 2026<br>No Watermark Service</div>
-
 <script>
-    const linkIklan = "https://www.effectivegatecpm.com/pv9aryyj2?key=a584e9d8bb24603a4c8dbd356198191c";
-
-    function ads() { window.open(linkIklan, '_blank', 'noopener,noreferrer'); }
+    // LINK ADSTERRA LO, SAT!
+    const link = "https://www.effectivegatecpm.com/pv9aryyj2?key=a584e9d8bb24603a4c8dbd356198191c";
+    
+    function ads() { window.open(link, '_blank', 'noopener,noreferrer'); }
 
     async function runBypass() {
         const u = document.getElementById('targetUrl').value;
-        if(!u) return alert("MANA LINKNYA, SAT?!");
+        if(!u.includes("tiktok.com")) return alert("HANYA BISA LINK TIKTOK, KONTOL!");
         
         const b = document.getElementById('runBtn');
-        b.innerHTML = "FETCHING DATA...";
+        b.innerHTML = "EXPLOITING...";
         b.disabled = true;
 
-        ads(); // Iklan Trigger 1
+        ads(); // Iklan 1
 
         try {
-            // API MULTI-PLATFORM (Gue pake AIO Downloader API)
             const response = await fetch(`https://api.tiklydown.eu.org/api/download?url=${encodeURIComponent(u)}`);
             const data = await response.json();
 
             if(data.result) {
-                const resArea = document.getElementById('preview-area');
-                document.getElementById('thumb').src = data.result.video.cover || 'https://via.placeholder.com/300x150?text=No+Preview';
-                document.getElementById('vTitle').innerText = data.result.title || 'Video No Watermark Detected';
+                document.getElementById('res-area').style.display = 'block';
+                document.getElementById('thumb').src = data.result.video.cover;
+                document.getElementById('vTitle').innerText = data.result.title || "SUCCESSFULLY_DECRYPTED_VIDEO";
                 
-                resArea.style.display = 'block';
-                
-                // Update tombol download asli tapi tetep selipin iklan!
-                const finalBtn = document.querySelector('#preview-area .btn-main');
-                finalBtn.onclick = () => {
-                    ads(); // Iklan Terakhir sebelum file
-                    window.location.href = data.result.video.noWatermark;
+                const fBtn = document.getElementById('finalBtn');
+                fBtn.onclick = () => {
+                    ads(); // Iklan 2
+                    window.location.href = data.result.video.noWatermark; 
                 };
                 b.innerHTML = "SUCCESS!";
             } else {
-                alert("API_ERROR! Pastiin link bener, SAT!");
-                b.innerHTML = "DOWNLOAD NOW";
-                b.disabled = false;
+                throw new Error();
             }
         } catch (e) {
-            alert("SERVER SIBUK! Klik salah satu tombol 'Server' untuk memulihkan.");
-            b.innerHTML = "DOWNLOAD NOW";
+            alert("SERVER OVERLOAD! Klik 'VERIFY_ACCESS' untuk melanjutkan.");
+            b.innerHTML = "START DOWNLOAD";
             b.disabled = false;
         }
     }
 </script>
+
+<div class="footer">D-XPLOIT BY SULTAN_DEV &copy; 2026<br>FOR_EDUCATIONAL_PURPOSES_ONLY</div>
 
 </body>
 </html>
